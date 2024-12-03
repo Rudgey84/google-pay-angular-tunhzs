@@ -4,7 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build"
+    "build": "ng build",
+    "build-element": "ng build --prod=true --localize --output-hashing=none && node ./concat.js"
   },
   "type": "module",
   "dependencies": {
