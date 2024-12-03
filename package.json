@@ -6,6 +6,7 @@
     "start": "ng serve",
     "build": "ng build"
   },
+  "type": "module",
   "dependencies": {
     "@angular/animations": "^18.1.0",
     "@angular/common": "^18.1.0",

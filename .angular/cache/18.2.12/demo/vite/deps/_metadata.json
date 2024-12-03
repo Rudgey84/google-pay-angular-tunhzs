@@ -1,0 +1,46 @@
+{
+  "hash": "acf87723",
+  "configHash": "13b5aa54",
+  "lockfileHash": "59a3b7ba",
+  "browserHash": "99e414b2",
+  "optimized": {
+    "@angular/core": {
+      "src": "../../../../../../node_modules/@angular/core/fesm2022/core.mjs",
+      "file": "@angular_core.js",
+      "fileHash": "001b6e7c",
+      "needsInterop": false
+    },
+    "@angular/elements": {
+      "src": "../../../../../../node_modules/@angular/elements/fesm2022/elements.mjs",
+      "file": "@angular_elements.js",
+      "fileHash": "4fda0238",
+      "needsInterop": false
+    },
+    "@angular/platform-browser": {
+      "src": "../../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
+      "file": "@angular_platform-browser.js",
+      "fileHash": "e56a9b9f",
+      "needsInterop": false
+    },
+    "@google-pay/button-angular": {
+      "src": "../../../../../../node_modules/@google-pay/button-angular/fesm2020/google-pay-button-angular.mjs",
+      "file": "@google-pay_button-angular.js",
+      "fileHash": "f2d32ff6",
+      "needsInterop": false
+    },
+    "zone.js": {
+      "src": "../../../../../../node_modules/zone.js/fesm2015/zone.js",
+      "file": "zone__js.js",
+      "fileHash": "7a613ae8",
+      "needsInterop": true
+    }
+  },
+  "chunks": {
+    "chunk-AT74JPCA": {
+      "file": "chunk-AT74JPCA.js"
+    },
+    "chunk-WDMUDEB6": {
+      "file": "chunk-WDMUDEB6.js"
+    }
+  }
+}
