@@ -21,7 +21,7 @@ export class AppComponent {
   buttonHeight = 40;
   isTop = window === window.top;
 
-  paymentRequest = {
+  paymentRequest: google.payments.api.PaymentDataRequest = {
     apiVersion: 2,
     apiVersionMinor: 0,
     allowedPaymentMethods: [
