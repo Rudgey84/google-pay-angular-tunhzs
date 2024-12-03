@@ -5,9 +5,9 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build-element": "ng build --prod=true --localize --output-hashing=none && node ./concat.js"
+    "build-element": "ng build --configuration production --localize --output-hashing=none && node ./concat.js"
   },
-  "type": "module",
+  "type": "commonjs",
   "dependencies": {
     "@angular/animations": "^18.1.0",
     "@angular/common": "^18.1.0",
@@ -15,10 +15,12 @@
     "@angular/core": "^18.1.0",
     "@angular/elements": "^18.2.9",
     "@angular/forms": "^18.1.0",
+    "@angular/localize": "^18.2.13",
     "@angular/platform-browser": "^18.1.0",
     "@angular/router": "^18.1.0",
     "@google-pay/button-angular": "^3.1.0",
     "@types/googlepay": "^0.7.6",
+    "concat": "^1.0.3",
     "rxjs": "^7.8.1",
     "tslib": "^2.5.0",
     "zone.js": "~0.14.0"
