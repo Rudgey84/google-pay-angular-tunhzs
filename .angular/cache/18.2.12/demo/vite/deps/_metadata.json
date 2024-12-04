@@ -1,37 +1,37 @@
 {
-  "hash": "c3b15d1d",
+  "hash": "24186565",
   "configHash": "13b5aa54",
-  "lockfileHash": "50b6f6a8",
-  "browserHash": "5309634e",
+  "lockfileHash": "97d51dcf",
+  "browserHash": "c4c1f98e",
   "optimized": {
     "@angular/core": {
       "src": "../../../../../../node_modules/@angular/core/fesm2022/core.mjs",
       "file": "@angular_core.js",
-      "fileHash": "7a0a361c",
+      "fileHash": "2831d7b1",
       "needsInterop": false
     },
     "@angular/elements": {
       "src": "../../../../../../node_modules/@angular/elements/fesm2022/elements.mjs",
       "file": "@angular_elements.js",
-      "fileHash": "40c141a1",
+      "fileHash": "b95c0769",
       "needsInterop": false
     },
     "@angular/platform-browser": {
       "src": "../../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
       "file": "@angular_platform-browser.js",
-      "fileHash": "8eff5e09",
+      "fileHash": "a30b14e6",
       "needsInterop": false
     },
     "@google-pay/button-angular": {
       "src": "../../../../../../node_modules/@google-pay/button-angular/fesm2020/google-pay-button-angular.mjs",
       "file": "@google-pay_button-angular.js",
-      "fileHash": "5da3236c",
+      "fileHash": "618e9498",
       "needsInterop": false
     },
     "zone.js": {
       "src": "../../../../../../node_modules/zone.js/fesm2015/zone.js",
       "file": "zone__js.js",
-      "fileHash": "b63f87f3",
+      "fileHash": "a33f75bf",
       "needsInterop": true
     }
   },
