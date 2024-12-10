@@ -1,48 +1,43 @@
+import {Component, Input, OnInit} from "@angular/core";
+import { IframeComponent } from "./iframe.component";
 import {
-  AfterViewInit,
-  Component,
-  ComponentFactoryResolver,
-  ComponentRef,
-  ElementRef,
-  OnInit,
-  ViewChild,
-  ViewContainerRef
-} from "@angular/core";
-import { InnerComponent } from "./outer.component";
+  MatDialog,
+  MatDialogRef
+} from "@angular/material/dialog";
+import { MatDialogModule } from "@angular/material/dialog";
 @Component({
   selector: "my-app",
   standalone: true,
-  template: `
-    <iframe #contentFrame></iframe>
-  `
+  imports: [MatDialogModule],
+  template: ``
+  
 })
-export class AppComponent implements OnInit, AfterViewInit {
-  private contentRef: ComponentRef<any> | null = null;
-  private frameDoc: Document | null = null;
-
-
-  @ViewChild("contentFrame") contentFrame!: ElementRef;
-
+export class AppComponent implements OnInit {
   constructor(
-    private resolver: ComponentFactoryResolver,
-    private viewContainerRef: ViewContainerRef
+    private matDialog: MatDialog
   ) {}
+  @Input() autoOpen: boolean | undefined;
+  matDialogRef!: MatDialogRef<IframeComponent>;
+  names: string = "";
 
-  public ngOnInit(): void {
-    const factory = this.resolver.resolveComponentFactory(InnerComponent);
-    this.contentRef = this.viewContainerRef.createComponent(factory);
+  ngOnInit() {
+      this.openModal();
   }
 
-  public ngAfterViewInit(): void {
-    setTimeout(() => {
-      // get reference to loaded iframe document
-      this.frameDoc =
-        this.contentFrame.nativeElement.contentDocument ||
-        this.contentFrame.nativeElement.contentWindow;
-        if (this.frameDoc && this.frameDoc.body) {
-          this.frameDoc.body.appendChild(this.contentRef?.location.nativeElement);
-        }
-        
-    }, 1000);
+  openModal() {
+    this.matDialogRef = this.matDialog.open(IframeComponent, {
+      data: { name: this.names },
+      width: '80vw',
+      height: '80vh',
+      disableClose: true,
+      autoFocus: false,
+      panelClass: 'custom-dialog-container'
+    });
+
+    this.matDialogRef.afterClosed().subscribe(res => {
+      if ((res == true)) {
+        this.names = "";
+      }
+    });
   }
 }

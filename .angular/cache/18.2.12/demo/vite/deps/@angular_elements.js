@@ -10,7 +10,7 @@ import {
   map,
   merge,
   switchMap
-} from "./chunk-SOLYWVNT.js";
+} from "./chunk-ODIJIABY.js";
 import "./chunk-WDMUDEB6.js";
 
 // node_modules/@angular/elements/fesm2022/elements.mjs

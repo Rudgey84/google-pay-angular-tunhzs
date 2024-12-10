@@ -5,6 +5,35 @@
     <meta charset="UTF-8" />
   </head>
   <body>
-    <my-app name="Fusion">loading</my-app>
+    <!-- <my-app name="Fusion">loading</my-app> -->
+    <!-- The merchant's custom "Pay Now" button -->
+<button id="pay-now">Pay Now</button>
+<!-- Container where the Angular Element can render -->
+<div id="fusion-container"></div>
+<script>
+  document.getElementById('pay-now').addEventListener('click', () => {
+    const container = document.getElementById('fusion-container');
+    // Create the Angular Fusuion Element dynamically
+    const fusionApp = document.createElement('my-app');
+    fusionApp.setAttribute('request-key', 'abc123');
+    fusionApp.setAttribute('merchantId', '10000001');
+    fusionApp.setAttribute('session-token', 'abc123');
+    fusionApp.setAttribute('password', 'abc123');
+    fusionApp.setAttribute('base-url', 'https://api.payenplatform.com');
+    container.appendChild(fusionApp); // Render the component
+    // Listen for a success event
+    fusionApp.addEventListener('payment-success', (event) => {
+      console.log('Payment successful:', event.detail);
+    });
+    // Listen for a digest-ready event
+    fusionApp.addEventListener('digest-ready', (event) => {
+      console.log('Digest received:', event.detail.digest);
+    });
+    // Listen for a payment-error event
+    fusionApp.addEventListener('payment-error', (event) => {
+      console.error('Payment error:', event.detail);
+    });
+  });
+</script>
   </body>
 </html>

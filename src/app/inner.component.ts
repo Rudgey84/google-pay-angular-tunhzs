@@ -1,12 +1,6 @@
 import { Component, ViewEncapsulation, Input, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { GooglePayButtonModule } from '@google-pay/button-angular';
 import 'zone.js';
-import { ModalComponent } from "./modal.component";
-import {
-    MatDialog,
-    MatDialogRef,
-    MAT_DIALOG_DATA
-  } from "@angular/material/dialog";
   import { MatDialogModule } from "@angular/material/dialog";
 @Component({
   selector: 'internal-app-root',
@@ -16,19 +10,12 @@ import {
   template: `
     <google-pay-button environment="TEST" [paymentRequest]="paymentRequest" 
     (loadpaymentdata)="onLoadPaymentData($event)"></google-pay-button>
-    <button mat-flat-button [disabled]="!name.length" color="primary" type="button" (click)="OpenModal()" style="margin:0px 20px;">Open Modal</button>
   `,
   encapsulation: ViewEncapsulation.ShadowDom
 })
 export class InnerComponent {
 
-    constructor(
-        private matDialog: MatDialog
-      ) {}
-
-      matDialogRef!: MatDialogRef<ModalComponent>;
-      names: string = "";
-
+    constructor() {}
 
   @Input() name = 'Fusion';
   buttonColor = 'black';
@@ -72,18 +59,5 @@ export class InnerComponent {
 
   onLoadPaymentData(event: any) {
     console.log('load payment data', event.detail);
-  }
-
-  OpenModal() {
-    this.matDialogRef = this.matDialog.open(ModalComponent, {
-      data: { name: this.name },
-      disableClose: true
-    });
-
-    this.matDialogRef.afterClosed().subscribe(res => {
-      if ((res == true)) {
-        this.name = "";
-      }
-    });
   }
 }

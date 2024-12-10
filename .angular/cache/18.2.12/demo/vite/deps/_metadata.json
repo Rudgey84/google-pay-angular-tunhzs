@@ -1,61 +1,61 @@
 {
-  "hash": "a0c2273d",
-  "configHash": "9f3b429e",
+  "hash": "8c69ca34",
+  "configHash": "7972509b",
   "lockfileHash": "1fa32a22",
-  "browserHash": "7f5793a6",
+  "browserHash": "8f957c63",
   "optimized": {
     "@angular/core": {
       "src": "../../../../../../node_modules/@angular/core/fesm2022/core.mjs",
       "file": "@angular_core.js",
-      "fileHash": "db82d7b6",
+      "fileHash": "46b9a06b",
       "needsInterop": false
     },
     "@angular/elements": {
       "src": "../../../../../../node_modules/@angular/elements/fesm2022/elements.mjs",
       "file": "@angular_elements.js",
-      "fileHash": "c31581f9",
+      "fileHash": "77f2b9ab",
       "needsInterop": false
     },
     "@angular/material/dialog": {
       "src": "../../../../../../node_modules/@angular/material/fesm2022/dialog.mjs",
       "file": "@angular_material_dialog.js",
-      "fileHash": "222b84c7",
-      "needsInterop": false
-    },
-    "@angular/material/slide-toggle": {
-      "src": "../../../../../../node_modules/@angular/material/fesm2022/slide-toggle.mjs",
-      "file": "@angular_material_slide-toggle.js",
-      "fileHash": "294b7b7d",
+      "fileHash": "875fd90f",
       "needsInterop": false
     },
     "@angular/platform-browser": {
       "src": "../../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
       "file": "@angular_platform-browser.js",
-      "fileHash": "7deb2ae5",
+      "fileHash": "091b6870",
       "needsInterop": false
     },
     "@google-pay/button-angular": {
       "src": "../../../../../../node_modules/@google-pay/button-angular/fesm2020/google-pay-button-angular.mjs",
       "file": "@google-pay_button-angular.js",
-      "fileHash": "22ff9567",
+      "fileHash": "1fcfce20",
       "needsInterop": false
     },
     "zone.js": {
       "src": "../../../../../../node_modules/zone.js/fesm2015/zone.js",
       "file": "zone__js.js",
-      "fileHash": "b5e2b571",
+      "fileHash": "cac2e4c0",
       "needsInterop": true
+    },
+    "@angular/material/button": {
+      "src": "../../../../../../node_modules/@angular/material/fesm2022/button.mjs",
+      "file": "@angular_material_button.js",
+      "fileHash": "044c653e",
+      "needsInterop": false
     }
   },
   "chunks": {
-    "chunk-DS2YTSAI": {
-      "file": "chunk-DS2YTSAI.js"
+    "chunk-ZVCDRJUB": {
+      "file": "chunk-ZVCDRJUB.js"
     },
-    "chunk-PR4MPTRI": {
-      "file": "chunk-PR4MPTRI.js"
+    "chunk-KF5U77HQ": {
+      "file": "chunk-KF5U77HQ.js"
     },
-    "chunk-SOLYWVNT": {
-      "file": "chunk-SOLYWVNT.js"
+    "chunk-ODIJIABY": {
+      "file": "chunk-ODIJIABY.js"
     },
     "chunk-WDMUDEB6": {
       "file": "chunk-WDMUDEB6.js"
