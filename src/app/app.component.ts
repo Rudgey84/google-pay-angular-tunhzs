@@ -1,59 +1,48 @@
-import { Component, Input, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { GooglePayButtonModule } from '@google-pay/button-angular';
-import 'zone.js';
+import {
+  AfterViewInit,
+  Component,
+  ComponentFactoryResolver,
+  ComponentRef,
+  ElementRef,
+  OnInit,
+  ViewChild,
+  ViewContainerRef
+} from "@angular/core";
+import { InnerComponent } from "./outer.component";
 @Component({
-  selector: 'internal-app-root',
+  selector: "my-app",
   standalone: true,
-  imports: [GooglePayButtonModule],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
-    <h1>Hello from {{ name }}!</h1>
-    <google-pay-button environment="TEST" [paymentRequest]="paymentRequest" 
-    (loadpaymentdata)="onLoadPaymentData($event)"></google-pay-button>
-  `,
+    <iframe #contentFrame></iframe>
+  `
 })
-export class AppComponent {
-  @Input() name = 'Fusion';
-  buttonColor = 'black';
-  buttonType = 'buy';
-  isCustomSize = false;
-  buttonWidth = 240;
-  buttonHeight = 40;
-  isTop = window === window.top;
+export class AppComponent implements OnInit, AfterViewInit {
+  private contentRef: ComponentRef<any> | null = null;
+  private frameDoc: Document | null = null;
 
-  paymentRequest: google.payments.api.PaymentDataRequest = {
-    apiVersion: 2,
-    apiVersionMinor: 0,
-    allowedPaymentMethods: [
-      {
-        type: 'CARD',
-        parameters: {
-          allowedAuthMethods: ['PAN_ONLY', 'CRYPTOGRAM_3DS'],
-          allowedCardNetworks: ['AMEX', 'VISA', 'MASTERCARD'],
-        },
-        tokenizationSpecification: {
-          type: 'PAYMENT_GATEWAY',
-          parameters: {
-            gateway: 'example',
-            gatewayMerchantId: 'exampleGatewayMerchantId',
-          },
-        },
-      },
-    ],
-    merchantInfo: {
-      merchantId: '12345678901234567890',
-      merchantName: 'Demo Merchant',
-    },
-    transactionInfo: {
-      totalPriceStatus: 'FINAL',
-      totalPriceLabel: 'Total',
-      totalPrice: '100.00',
-      currencyCode: 'USD',
-      countryCode: 'US',
-    },
-  };
 
-  onLoadPaymentData(event: any) {
-    console.log('load payment data', event.detail);
+  @ViewChild("contentFrame") contentFrame!: ElementRef;
+
+  constructor(
+    private resolver: ComponentFactoryResolver,
+    private viewContainerRef: ViewContainerRef
+  ) {}
+
+  public ngOnInit(): void {
+    const factory = this.resolver.resolveComponentFactory(InnerComponent);
+    this.contentRef = this.viewContainerRef.createComponent(factory);
+  }
+
+  public ngAfterViewInit(): void {
+    setTimeout(() => {
+      // get reference to loaded iframe document
+      this.frameDoc =
+        this.contentFrame.nativeElement.contentDocument ||
+        this.contentFrame.nativeElement.contentWindow;
+        if (this.frameDoc && this.frameDoc.body) {
+          this.frameDoc.body.appendChild(this.contentRef?.location.nativeElement);
+        }
+        
+    }, 1000);
   }
 }
