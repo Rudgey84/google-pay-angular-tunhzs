@@ -16,11 +16,20 @@ export class AppComponent implements OnInit {
   constructor(
     private matDialog: MatDialog
   ) {}
-  @Input() autoOpen: boolean | undefined;
+  @Input() requestKey!: string;
+  @Input() sessionToken!: string;
+  @Input() password!: string;
+  @Input() baseUrl!: string;
+  @Input() merchantId!: string;
   matDialogRef!: MatDialogRef<IframeComponent>;
   names: string = "";
 
   ngOnInit() {
+    console.log("Request Key:", this.requestKey);
+    console.log("Session Token:", this.sessionToken);
+    console.log("Password:", this.password);
+    console.log("Base URL:", this.baseUrl);
+    console.log("Merchant ID:", this.merchantId);
       this.openModal();
   }
 

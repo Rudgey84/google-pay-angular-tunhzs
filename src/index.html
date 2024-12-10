@@ -15,11 +15,11 @@
     const container = document.getElementById('fusion-container');
     // Create the Angular Fusuion Element dynamically
     const fusionApp = document.createElement('my-app');
-    fusionApp.setAttribute('request-key', 'abc123');
-    fusionApp.setAttribute('merchantId', '10000001');
-    fusionApp.setAttribute('session-token', 'abc123');
-    fusionApp.setAttribute('password', 'abc123');
+    fusionApp.setAttribute('request-key', 'requestKey123');
+    fusionApp.setAttribute('session-token', 'sessionToken123');
+    fusionApp.setAttribute('password', 'Password123');
     fusionApp.setAttribute('base-url', 'https://api.payenplatform.com');
+    fusionApp.setAttribute('merchant-id', '10000001');
     container.appendChild(fusionApp); // Render the component
     // Listen for a success event
     fusionApp.addEventListener('payment-success', (event) => {
