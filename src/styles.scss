@@ -1,0 +1,70 @@
+/* Add application styles & imports to this file! */
+@import "@angular/material/prebuilt-themes/indigo-pink.css";
+
+.custom-dialog-container .mat-mdc-dialog-surface {
+    padding: 20px;
+    overflow: hidden;
+}
+
+.mdc-button {
+    background-color: var(--primary-theme-color)!important; 
+    color: var(--button-text-color)!important;
+  }
+
+  .positioned-button {
+    position: relative;
+    top: -100px;
+  }
+
+  /* Hide the Google Pay button when isLoading is true */
+.hidden {
+    display: none;
+  }
+
+  iframe {
+    min-width: 100%;
+    min-height: 100%;
+    border: 0;
+  }
+
+/* Ensure the parent container of the loading spinner takes up the full size */
+.loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh; /* Full viewport height (modal's container) */
+    width: 100%; /* Full width */
+    position: absolute; /* To overlay it on top of the modal */
+    top: 0;
+    left: 0;
+}
+
+/* Spinner styling */
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading::after {
+    content: "";
+    width: 50px;
+    height: 50px;
+    border: 10px solid #dddddd;
+    border-top-color: #4b006d;
+    border-top-color: var(--primary-theme-color, #4b006d) !important;
+    border-radius: 50%;
+    animation: loading 1s ease infinite;
+}
+
+/* Rotate the spinner */
+@keyframes loading {
+    to {
+        transform: rotate(1turn);
+    }
+}
+
+          /* If you want to disable scrolling for the modal's body */
+        //   .mat-mdc-dialog-surface {
+        //     overflow: hidden !important; /* Prevent scrollbars in the dialog */
+        //   }

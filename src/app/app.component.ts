@@ -1,14 +1,16 @@
-import {Component, Input, OnInit} from "@angular/core";
+import {Component, ViewEncapsulation, Input, OnInit} from "@angular/core";
 import { IframeComponent } from "./iframe.component";
 import {
   MatDialog,
   MatDialogRef
 } from "@angular/material/dialog";
 import { MatDialogModule } from "@angular/material/dialog";
+import { MatButtonModule } from '@angular/material/button';
 @Component({
   selector: "my-app",
   standalone: true,
-  imports: [MatDialogModule],
+ // encapsulation: ViewEncapsulation.ShadowDom,
+  imports: [MatDialogModule, MatButtonModule],
   template: ``
   
 })

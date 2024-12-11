@@ -1,58 +1,64 @@
 {
-  "hash": "8c69ca34",
-  "configHash": "7972509b",
+  "hash": "e6ecd410",
+  "configHash": "11e1c52c",
   "lockfileHash": "1fa32a22",
-  "browserHash": "8f957c63",
+  "browserHash": "aa76931e",
   "optimized": {
     "@angular/core": {
       "src": "../../../../../../node_modules/@angular/core/fesm2022/core.mjs",
       "file": "@angular_core.js",
-      "fileHash": "46b9a06b",
+      "fileHash": "939db222",
       "needsInterop": false
     },
     "@angular/elements": {
       "src": "../../../../../../node_modules/@angular/elements/fesm2022/elements.mjs",
       "file": "@angular_elements.js",
-      "fileHash": "77f2b9ab",
+      "fileHash": "74d49eb4",
       "needsInterop": false
     },
     "@angular/material/dialog": {
       "src": "../../../../../../node_modules/@angular/material/fesm2022/dialog.mjs",
       "file": "@angular_material_dialog.js",
-      "fileHash": "875fd90f",
+      "fileHash": "80249a0f",
       "needsInterop": false
     },
     "@angular/platform-browser": {
       "src": "../../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
       "file": "@angular_platform-browser.js",
-      "fileHash": "091b6870",
+      "fileHash": "3adc7756",
       "needsInterop": false
     },
     "@google-pay/button-angular": {
       "src": "../../../../../../node_modules/@google-pay/button-angular/fesm2020/google-pay-button-angular.mjs",
       "file": "@google-pay_button-angular.js",
-      "fileHash": "1fcfce20",
+      "fileHash": "8afe459a",
       "needsInterop": false
     },
     "zone.js": {
       "src": "../../../../../../node_modules/zone.js/fesm2015/zone.js",
       "file": "zone__js.js",
-      "fileHash": "cac2e4c0",
+      "fileHash": "5dbe3503",
       "needsInterop": true
     },
     "@angular/material/button": {
       "src": "../../../../../../node_modules/@angular/material/fesm2022/button.mjs",
       "file": "@angular_material_button.js",
-      "fileHash": "044c653e",
+      "fileHash": "60b02297",
+      "needsInterop": false
+    },
+    "@angular/common": {
+      "src": "../../../../../../node_modules/@angular/common/fesm2022/common.mjs",
+      "file": "@angular_common.js",
+      "fileHash": "1a6f76d4",
       "needsInterop": false
     }
   },
   "chunks": {
-    "chunk-ZVCDRJUB": {
-      "file": "chunk-ZVCDRJUB.js"
+    "chunk-WOCK3JQP": {
+      "file": "chunk-WOCK3JQP.js"
     },
-    "chunk-KF5U77HQ": {
-      "file": "chunk-KF5U77HQ.js"
+    "chunk-HED5XPY3": {
+      "file": "chunk-HED5XPY3.js"
     },
     "chunk-ODIJIABY": {
       "file": "chunk-ODIJIABY.js"

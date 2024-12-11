@@ -13,46 +13,19 @@ import {
     ViewContainerRef
   } from "@angular/core";
   import { InnerComponent } from "./inner.component";
-
+  import { CommonModule } from '@angular/common';
   @Component({
-    selector: "hello-world", // Updated to include a hyphen
-    encapsulation: ViewEncapsulation.ShadowDom,
+    selector: "hello-world",
+ //   encapsulation: ViewEncapsulation.ShadowDom,
     standalone: true,
-    imports: [MatButtonModule],
+    imports: [MatButtonModule, CommonModule],
     template: `
-    <iframe #contentFrame></iframe>
-  
-    <div mat-dialog-actions align="end">
-      <span>
-        <button mat-stroked-button
-          class="positioned-button"
-          type="button"
-          mat-stroked-button
-          color="primary"
-          (click)="CloseDialog()"
-        >
-          Cancel
-        </button>
-      </span>
-    </div>
-    `,
-    styles: [
-      `
-        iframe {
-          min-width: 100%;
-          min-height: 100%;
-          border: 0;
-        }
-        .positioned-button {
-          position: relative;
-          top: -100px;
-        }
-        /* If you want to disable scrolling for the modal's body */
-        .mat-mdc-dialog-surface {
-          overflow: hidden !important; /* Prevent scrollbars in the dialog */
-        }
-      `
-    ]
+<div *ngIf="isLoading" class="loading-container">
+    <div class="loading"></div>
+</div>
+
+    <iframe #contentFrame>Loading...</iframe>
+    `
   })
   export class IframeComponent implements OnInit, AfterViewInit {
     private contentRef: ComponentRef<any> | null = null;
@@ -76,16 +49,30 @@ import {
       // You can now access these values in the component
       console.log("Received Data:", data);
     }
-  
+
+    isLoading: boolean = true;
+
     ngOnInit(): void {
       const factory = this.resolver.resolveComponentFactory(InnerComponent);
       this.contentRef = this.viewContainerRef.createComponent(factory);
-    
-      this.contentRef.instance.requestKey = this.data.requestKey;
-      this.contentRef.instance.sessionToken = this.data.sessionToken;
-      this.contentRef.instance.password = this.data.password;
-      this.contentRef.instance.baseUrl = this.data.baseUrl;
-      this.contentRef.instance.merchantId = this.data.merchantId;
+  
+      if (this.contentRef.instance) {
+        const instance = this.contentRef.instance;
+        instance.requestKey = this.data.requestKey;
+        instance.sessionToken = this.data.sessionToken;
+        instance.password = this.data.password;
+        instance.baseUrl = this.data.baseUrl;
+        instance.merchantId = this.data.merchantId;
+  
+        // Listen for the closeDialog event
+        instance.closeDialog.subscribe(() => {
+          this.CloseDialog();
+        });
+
+        instance.loadingState.subscribe((loading: boolean) => {
+          this.isLoading = loading;
+        });
+      }
     }
   
     public ngAfterViewInit(): void {
@@ -94,10 +81,24 @@ import {
         this.frameDoc =
           this.contentFrame.nativeElement.contentDocument ||
           this.contentFrame.nativeElement.contentWindow;
-        if (this.frameDoc && this.frameDoc.body) {
-          this.frameDoc.body.appendChild(this.contentRef?.location.nativeElement);
-        }
+          if (this.frameDoc && this.frameDoc.body) {
+            // Inject the component into the iframe
+            this.frameDoc.body.appendChild(this.contentRef?.location.nativeElement);
+    
+            // Inject global styles into the iframe
+            this.injectGlobalStyles();
+          }
       }, 1000);
+    }
+
+    injectGlobalStyles(): void {
+      if (this.frameDoc) {
+        const globalStyles = document.querySelectorAll('style, link[rel="stylesheet"]');
+        globalStyles.forEach((styleElement) => {
+          const clonedStyle = styleElement.cloneNode(true);
+          this.frameDoc?.head.appendChild(clonedStyle);
+        });
+      }
     }
   
     CloseDialog() {
