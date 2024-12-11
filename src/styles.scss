@@ -1,5 +1,28 @@
 /* Add application styles & imports to this file! */
-@import "@angular/material/prebuilt-themes/indigo-pink.css";
+@use '@angular/material' as mat;
+//@import "@angular/material/prebuilt-themes/indigo-pink.css";
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+
+$theme: mat.define-theme((
+  color: (
+    theme-type: light,
+    primary: mat.$azure-palette,
+    tertiary: mat.$blue-palette,
+  )
+));
+
+body {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  margin: 0;
+  height: 100%;
+
+  @include mat.all-component-themes($theme);
+}
+
+@include mat.core();
+@include mat.color-variants-backwards-compatibility($theme);
+
 
 .custom-dialog-container .mat-mdc-dialog-surface {
     padding: 20px;
@@ -9,11 +32,6 @@
 .mdc-button {
     background-color: var(--primary-theme-color)!important; 
     color: var(--button-text-color)!important;
-  }
-
-  .positioned-button {
-    position: relative;
-    top: -100px;
   }
 
   /* Hide the Google Pay button when isLoading is true */
@@ -64,7 +82,43 @@
     }
 }
 
-          /* If you want to disable scrolling for the modal's body */
-        //   .mat-mdc-dialog-surface {
-        //     overflow: hidden !important; /* Prevent scrollbars in the dialog */
-        //   }
+          /* Payment example */
+
+          .example-full-width {
+            width: 100%;
+            margin-bottom: 8px;
+          }
+          
+          .mat-stepper-horizontal {
+            background-color: transparent;
+          }
+
+          .payment-type-container {
+            margin-bottom: 40px!important;
+        
+            .mat-radio-button {
+              margin-right: 40px;
+            }
+        
+            .payment-logo {
+              width: 90px;
+              margin-left: 10px;
+            }
+          }
+
+          h4 {
+            margin-bottom: 40px;
+          }
+
+          .mat-mdc-card-content {
+            margin-bottom: 40px;
+          }
+          
+          .mat-mdc-card {
+            padding: 40px;
+            box-shadow: none!important;
+            }
+            .expire-month {
+              width: 90px;
+              margin-right: 10px;
+            }

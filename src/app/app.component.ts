@@ -5,12 +5,11 @@ import {
   MatDialogRef
 } from "@angular/material/dialog";
 import { MatDialogModule } from "@angular/material/dialog";
-import { MatButtonModule } from '@angular/material/button';
 @Component({
   selector: "my-app",
   standalone: true,
  // encapsulation: ViewEncapsulation.ShadowDom,
-  imports: [MatDialogModule, MatButtonModule],
+  imports: [MatDialogModule],
   template: ``
   
 })
@@ -41,7 +40,7 @@ export class AppComponent implements OnInit {
         baseUrl: this.baseUrl,
         merchantId: this.merchantId
       },
-      width: '80vw',
+      minWidth: '40vw',
       height: '80vh',
       disableClose: true,
       autoFocus: false,

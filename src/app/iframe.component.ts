@@ -1,5 +1,4 @@
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
-import { MatButtonModule } from '@angular/material/button';
 import {
     AfterViewInit,
     Component,
@@ -14,17 +13,18 @@ import {
   } from "@angular/core";
   import { InnerComponent } from "./inner.component";
   import { CommonModule } from '@angular/common';
+
   @Component({
     selector: "hello-world",
  //   encapsulation: ViewEncapsulation.ShadowDom,
     standalone: true,
-    imports: [MatButtonModule, CommonModule],
+    imports: [CommonModule],
     template: `
 <div *ngIf="isLoading" class="loading-container">
     <div class="loading"></div>
 </div>
 
-    <iframe #contentFrame>Loading...</iframe>
+    <iframe sandbox="allow-scripts allow-same-origin" #contentFrame>Loading...</iframe>
     `
   })
   export class IframeComponent implements OnInit, AfterViewInit {
