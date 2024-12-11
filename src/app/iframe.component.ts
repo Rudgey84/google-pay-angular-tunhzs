@@ -59,20 +59,33 @@ import {
     private frameDoc: Document | null = null;
   
     @ViewChild("contentFrame") contentFrame!: ElementRef;
-    names: string;
+
   
     constructor(
       private _mdr: MatDialogRef<IframeComponent>,
       private resolver: ComponentFactoryResolver,
       private viewContainerRef: ViewContainerRef,
-      @Inject(MAT_DIALOG_DATA) data: { names: string }
+      @Inject(MAT_DIALOG_DATA) public data: {
+        requestKey: string;
+        sessionToken: string;
+        password: string;
+        baseUrl: string;
+        merchantId: string;
+      }
     ) {
-      this.names = data.names;
+      // You can now access these values in the component
+      console.log("Received Data:", data);
     }
   
-    public ngOnInit(): void {
+    ngOnInit(): void {
       const factory = this.resolver.resolveComponentFactory(InnerComponent);
       this.contentRef = this.viewContainerRef.createComponent(factory);
+    
+      this.contentRef.instance.requestKey = this.data.requestKey;
+      this.contentRef.instance.sessionToken = this.data.sessionToken;
+      this.contentRef.instance.password = this.data.password;
+      this.contentRef.instance.baseUrl = this.data.baseUrl;
+      this.contentRef.instance.merchantId = this.data.merchantId;
     }
   
     public ngAfterViewInit(): void {

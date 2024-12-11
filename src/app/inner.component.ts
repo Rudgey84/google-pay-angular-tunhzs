@@ -1,29 +1,34 @@
 import { Component, ViewEncapsulation, Input, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { GooglePayButtonModule } from '@google-pay/button-angular';
 import 'zone.js';
-  import { MatDialogModule } from "@angular/material/dialog";
+import { MatDialogModule } from "@angular/material/dialog";
+
 @Component({
   selector: 'internal-app-root',
   standalone: true,
   imports: [GooglePayButtonModule, MatDialogModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
-    <google-pay-button environment="TEST" [paymentRequest]="paymentRequest" 
-    (loadpaymentdata)="onLoadPaymentData($event)"></google-pay-button>
+    <google-pay-button
+      environment="TEST"
+      [paymentRequest]="paymentRequest"
+    ></google-pay-button>
+    <p>{{requestKey}}</p>
+    <p>{{sessionToken}}</p>
+    <p>{{password}}</p>
+    <p>{{baseUrl}}</p>
+    <p>{{merchantId}}</p>
   `,
   encapsulation: ViewEncapsulation.ShadowDom
 })
 export class InnerComponent {
+  constructor() {}
 
-    constructor() {}
-
-  @Input() name = 'Fusion';
-  buttonColor = 'black';
-  buttonType = 'buy';
-  isCustomSize = false;
-  buttonWidth = 240;
-  buttonHeight = 40;
-  isTop = window === window.top;
+  @Input() requestKey: string = '';
+  @Input() sessionToken: string = '';
+  @Input() password: string = '';
+  @Input() baseUrl: string = '';
+  @Input() merchantId: string = '';
 
   paymentRequest: google.payments.api.PaymentDataRequest = {
     apiVersion: 2,
@@ -56,8 +61,4 @@ export class InnerComponent {
       countryCode: 'US',
     },
   };
-
-  onLoadPaymentData(event: any) {
-    console.log('load payment data', event.detail);
-  }
 }
