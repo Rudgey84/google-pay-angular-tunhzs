@@ -46,6 +46,7 @@ import { DemoMaterialModule } from './material.module';
             <google-pay-button
   [ngClass]="{'hidden': isLoading}"
     environment="TEST"
+    (loadpaymentdata)="onLoadPaymentData($event)"
     [paymentRequest]="paymentRequest"
   ></google-pay-button>
         </div>
@@ -170,23 +171,15 @@ export class InnerComponent {
     transactionInfo: {
       totalPriceStatus: 'FINAL',
       totalPriceLabel: 'Total',
-      totalPrice: '100.00',
+      totalPrice: '10.00',
       currencyCode: 'USD',
       countryCode: 'US',
     },
   };
 
-  // ngOnChanges(changes: SimpleChanges): void {
-  //   if (
-  //     this.requestKey &&
-  //     this.sessionToken &&
-  //     this.password &&
-  //     this.baseUrl &&
-  //     this.merchantId
-  //   ) {
-  //     this.isLoading = false;
-  //   }
-  // }
+  onLoadPaymentData(event: any) {
+    console.log("load payment data", event.detail);
+  }
   
 
   cancel(): void {
