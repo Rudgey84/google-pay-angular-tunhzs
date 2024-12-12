@@ -46,7 +46,6 @@ import {
         merchantId: string;
       }
     ) {
-      // You can now access these values in the component
       console.log("Received Data:", data);
     }
 
@@ -60,7 +59,6 @@ import {
         const instance = this.contentRef.instance;
         instance.requestKey = this.data.requestKey;
         instance.sessionToken = this.data.sessionToken;
-        instance.password = this.data.password;
         instance.baseUrl = this.data.baseUrl;
         instance.merchantId = this.data.merchantId;
   
@@ -95,6 +93,7 @@ import {
       if (this.frameDoc) {
         const globalStyles = document.querySelectorAll('style, link[rel="stylesheet"]');
         globalStyles.forEach((styleElement) => {
+          // Important these are cloned for security so they can't be updated
           const clonedStyle = styleElement.cloneNode(true);
           this.frameDoc?.head.appendChild(clonedStyle);
         });

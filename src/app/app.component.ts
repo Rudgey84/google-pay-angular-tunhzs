@@ -25,7 +25,6 @@ export class AppComponent implements OnInit {
   @Input() merchantId!: string;
 
   matDialogRef!: MatDialogRef<IframeComponent>;
-  names: string = "";
 
   ngOnInit() {
       this.openModal();
@@ -36,7 +35,6 @@ export class AppComponent implements OnInit {
       data: {
         requestKey: this.requestKey,
         sessionToken: this.sessionToken,
-        password: this.password,
         baseUrl: this.baseUrl,
         merchantId: this.merchantId
       },
@@ -49,7 +47,10 @@ export class AppComponent implements OnInit {
   
     this.matDialogRef.afterClosed().subscribe(res => {
       if ((res == true)) {
-        this.names = "";
+        this.requestKey,
+        this.sessionToken,
+        this.baseUrl,
+        this.merchantId
       }
     });
   }

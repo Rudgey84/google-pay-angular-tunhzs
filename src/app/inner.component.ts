@@ -13,7 +13,6 @@ import { DemoMaterialModule } from './material.module';
   <div [ngClass]="{'hidden': isLoading}">
   <p>{{requestKey}}</p>
   <p>{{sessionToken}}</p>
-  <p>{{password}}</p>
   <p>{{baseUrl}}</p>
   <p>{{merchantId}}</p>
   </div>
@@ -128,7 +127,6 @@ import { DemoMaterialModule } from './material.module';
 export class InnerComponent {
   @Input() requestKey: string = '';
   @Input() sessionToken: string = '';
-  @Input() password: string = '';
   @Input() baseUrl: string = '';
   @Input() merchantId: string = '';
 
