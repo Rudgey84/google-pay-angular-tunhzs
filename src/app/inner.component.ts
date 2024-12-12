@@ -54,8 +54,8 @@ import { DemoMaterialModule } from './material.module';
             <mat-form-field appearance="fill" dense class="example-full-width">
               <mat-icon matPrefix dense color="primary">payment</mat-icon>
               <mat-label>Card number</mat-label>
-              <input matInput #input maxlength="16" placeholder="Enter card number" value="9871-5000-3456-8374" />
-              <mat-hint align="end">{{ input.value?.length || 0 }}/19</mat-hint>
+              <input matInput #input maxlength="16" placeholder="Enter card number" value="4659-0000-0000-0000" />
+              <mat-hint align="end">{{ input.value.length || 0 }}/19</mat-hint>
             </mat-form-field>
           </div>
           <div>
@@ -86,11 +86,11 @@ import { DemoMaterialModule } from './material.module';
         <mat-form-field class="expire-month" dense>
           <mat-label>Year</mat-label>
           <select matNativeControl>
-            <option value="january">2020</option>
-            <option value="february">2021</option>
-            <option value="march">2022</option>
-            <option value="april">2023</option>
-            <option value="april">2024</option>
+            <option value="january">2024</option>
+            <option value="february">2025</option>
+            <option value="march">2026</option>
+            <option value="april">2027</option>
+            <option value="april">2028</option>
           </select>
         </mat-form-field>
         <mat-form-field dense appearance="fill">
