@@ -32,7 +32,6 @@ export class IframeComponent implements OnInit, AfterViewInit {
 
   @ViewChild("contentFrame") contentFrame!: ElementRef;
 
-
   constructor(
     private _mdr: MatDialogRef<IframeComponent>,
     private viewContainerRef: ViewContainerRef,

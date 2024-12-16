@@ -4,6 +4,7 @@ import 'zone.js';
 
 import { CommonModule } from '@angular/common';
 import { DemoMaterialModule } from './material.module';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'internal-component',
@@ -39,8 +40,8 @@ import { DemoMaterialModule } from './material.module';
       <mat-card-content>
         <div class="payment-type-container">
           <mat-radio-group aria-label="Select an option" [selected]="visa">
-            <mat-radio-button #visa value="visa"><img class="payment-logo" src="https://res.cloudinary.com/ffdc/image/upload/v1593768892/cards_logos_drnu5h.png"></mat-radio-button>
-            <mat-radio-button value="paypal"><img class="payment-logo" src="https://res.cloudinary.com/ffdc/image/upload/v1593768982/paypal_logo_st1m41.png"></mat-radio-button>
+            <mat-radio-button #visa value="visa"><img class="payment-logo" [src]="getSafeUrl('https://res.cloudinary.com/ffdc/image/upload/v1593768892/cards_logos_drnu5h.png')"></mat-radio-button>
+            <mat-radio-button value="paypal"><img class="payment-logo" [src]="getSafeUrl('https://res.cloudinary.com/ffdc/image/upload/v1593768982/paypal_logo_st1m41.png')"></mat-radio-button>
           </mat-radio-group>
             <google-pay-button
   [ngClass]="{'hidden': isLoading}"
@@ -136,11 +137,17 @@ export class InnerComponent {
 
   @Output() loadingState: EventEmitter<boolean> = new EventEmitter<boolean>();
 
+  constructor(private sanitizer: DomSanitizer) {}
+
   ngOnInit(): void {
     setTimeout(() => {
       this.isLoading = false;
       this.loadingState.emit(this.isLoading);
     }, 1000);
+  }
+
+  getSafeUrl(url: string): SafeUrl {
+    return this.sanitizer.bypassSecurityTrustUrl(url);
   }
 
   paymentRequest: google.payments.api.PaymentDataRequest = {
@@ -176,9 +183,12 @@ export class InnerComponent {
   };
 
   onLoadPaymentData(event: any) {
-    console.log("load payment data", event.detail);
+    try {
+      console.log("load payment data", event.detail);
+    } catch (error) {
+      console.error('Error loading payment data:', error);
+    }
   }
-  
 
   cancel(): void {
     this.closeDialog.emit();

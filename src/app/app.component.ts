@@ -24,35 +24,37 @@ export class AppComponent implements OnInit {
   @Input() baseUrl!: string;
   @Input() merchantId!: string;
 
-  matDialogRef!: MatDialogRef<IframeComponent>;
+  matDialogRef!: MatDialogRef<IframeComponent> | null;
 
   ngOnInit() {
       this.openModal();
   }
 
   openModal() {
-    this.matDialogRef = this.matDialog.open(IframeComponent, {
-      data: {
-        requestKey: this.requestKey,
-        sessionToken: this.sessionToken,
-        baseUrl: this.baseUrl,
-        merchantId: this.merchantId
-      },
-      minWidth: '40vw',
-      height: '80vh',
-      disableClose: true,
-      autoFocus: false,
-      panelClass: 'custom-dialog-container'
-    });
-  
-    this.matDialogRef.afterClosed().subscribe(res => {
-      if ((res == true)) {
-        this.requestKey,
-        this.sessionToken,
-        this.baseUrl,
-        this.merchantId
-      }
-    });
+    if (!this.matDialogRef) {
+      this.matDialogRef = this.matDialog.open(IframeComponent, {
+        data: {
+          requestKey: this.requestKey,
+          sessionToken: this.sessionToken,
+          baseUrl: this.baseUrl,
+          merchantId: this.merchantId
+        },
+        minWidth: '40vw',
+        height: '80vh',
+        disableClose: true,
+        autoFocus: false,
+        panelClass: 'custom-dialog-container'
+      });
+    
+      this.matDialogRef.afterClosed().subscribe(res => {
+        if ((res == true)) {
+          this.requestKey,
+          this.sessionToken,
+          this.baseUrl,
+          this.merchantId
+        }
+        this.matDialogRef = null;
+      });
+    }
   }
-  
 }
