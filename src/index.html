@@ -13,8 +13,6 @@
 <div id="fusion-container"></div>
 
 <script>
-  const theme = 'light';
-
   document.getElementById('pay-now').addEventListener('click', () => {
     const container = document.getElementById('fusion-container');
     // Create the Angular Fusuion Element dynamically
@@ -23,7 +21,7 @@
     fusionApp.setAttribute('session-token', 'sessionToken123');
     fusionApp.setAttribute('base-url', 'https://api.payenplatform.com');
     fusionApp.setAttribute('merchant-id', '10000001');
-    fusionApp.setAttribute('theme', theme);
+    fusionApp.setAttribute('theme', 'light');
     container.appendChild(fusionApp); // Render the component
     // Listen for a success event
     fusionApp.addEventListener('payment-success', (event) => {
