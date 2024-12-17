@@ -23,11 +23,21 @@ export class AppComponent implements OnInit {
   @Input() password!: string;
   @Input() baseUrl!: string;
   @Input() merchantId!: string;
+  @Input() theme!: string;
 
   matDialogRef!: MatDialogRef<IframeComponent> | null;
 
   ngOnInit() {
+      this.applyTheme();
       this.openModal();
+  }
+
+  applyTheme() {
+    if (this.theme === 'dark') {
+      document.body.classList.add('dark-theme');
+    } else {
+      document.body.classList.remove('dark-theme');
+    }
   }
 
   openModal() {

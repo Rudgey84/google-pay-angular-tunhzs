@@ -3,10 +3,17 @@
 //@import "@angular/material/prebuilt-themes/indigo-pink.css";
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
-
-$theme: mat.define-theme((
+$light-theme: mat.define-theme((
   color: (
     theme-type: light,
+    primary: mat.$azure-palette,
+    tertiary: mat.$blue-palette,
+  )
+));
+
+$dark-theme: mat.define-theme((
+  color: (
+    theme-type: dark,
     primary: mat.$azure-palette,
     tertiary: mat.$blue-palette,
   )
@@ -17,12 +24,16 @@ body {
   margin: 0;
   height: 100%;
 
-  @include mat.all-component-themes($theme);
+  @include mat.all-component-themes($light-theme);
+}
+
+body.dark-theme {
+  @include mat.all-component-themes($dark-theme);
 }
 
 @include mat.core();
-@include mat.color-variants-backwards-compatibility($theme);
-
+@include mat.color-variants-backwards-compatibility($light-theme);
+@include mat.color-variants-backwards-compatibility($dark-theme);
 
 .custom-dialog-container .mat-mdc-dialog-surface {
     padding: 20px;
