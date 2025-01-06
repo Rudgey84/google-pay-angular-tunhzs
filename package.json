@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build-element": "ng build --configuration production --localize --output-hashing=none && node ./concat.js"
+    "build-element": "ng build --configuration production --output-hashing=none && node ./concat.js"
   },
   "type": "commonjs",
   "dependencies": {
